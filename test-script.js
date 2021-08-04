@@ -4,12 +4,18 @@ import { check, group } from 'k6';
 const baseUrl = 'http://jsonplaceholder.typicode.com'
 
 export const options = {
-    vus: 50,
-    stages: [
-        { duration: '30s', target: 10 },
-        { duration: '1m', target: 40 },
-        { duration: '30s', target: 0 },
+  vus: 50,
+  stages: [
+    { duration: '30s', target: 10 },
+    { duration: '1m', target: 40 },
+    { duration: '30s', target: 0 },
+  ],
+  thresholds: {
+    checks: [
+      { threshold: 'rate>0.9', abortOnFail: true, delayAbortEval: '10s' },
     ],
+    http_req_duration: ['avg<50'],
+  },
 };
 
 export default function () {

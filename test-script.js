@@ -10,12 +10,12 @@ export const options = {
     { duration: '1m', target: 40 },
     { duration: '30s', target: 0 },
   ],
-  thresholds: {
-    checks: [
-      { threshold: 'rate>0.9', abortOnFail: true, delayAbortEval: '10s' },
-    ],
-    http_req_duration: ['avg<50'],
-  },
+//   thresholds: {
+//     checks: [
+//       { threshold: 'rate>0.9', abortOnFail: true, delayAbortEval: '10s' },
+//     ],
+//     http_req_duration: ['avg<50'],
+//   },
 };
 
 export default function () {
@@ -33,5 +33,12 @@ export default function () {
                 'http response code is 200': res.status === 200,
             });
         });
-    })
+
+        group('Todos endpoint (invalid)', function () {
+            const res = http.get(`${baseUrl}/todoss`);
+            check(res, {
+              'is status code 200': res.status === 200,
+            });
+        });
+    });
 }

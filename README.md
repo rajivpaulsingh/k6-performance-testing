@@ -2,7 +2,7 @@
 
 # K6 Example Project
 
-This is a performance testing repository using a tool called [k6](https://k6.io/). The tests are written on JavaScript.
+This is a performance testing repository using a tool called [k6](https://k6.io/). The tests are written in JavaScript.
 
 # Running the test
 

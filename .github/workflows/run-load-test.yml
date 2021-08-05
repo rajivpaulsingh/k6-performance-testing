@@ -1,0 +1,16 @@
+name: Run load test
+on: 
+  push:
+    branches:
+      - master
+
+jobs: 
+  k6_load_test:
+    name: k6 Load test
+    runs-on: ubuntu-latest
+    container: docker://loadimpact/k6:ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Local k6 test
+        run: k6 run test.js

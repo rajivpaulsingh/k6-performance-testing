@@ -3,7 +3,8 @@ on:
   push:
     branches:
       - master
-
+      - main
+      
 jobs: 
   k6_load_test:
     name: k6 Load test

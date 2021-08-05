@@ -8,7 +8,7 @@ jobs:
   k6_load_test:
     name: k6 Load test
     runs-on: ubuntu-latest
-    container: docker://loadimpact/k6:ubuntu-latest
+    container: docker://loadimpact/k6:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
